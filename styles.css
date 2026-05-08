@@ -415,6 +415,11 @@ h3 {
   filter: grayscale(1) contrast(1.08);
   object-fit: cover;
   width: 100%;
+  transition: filter 0.5s ease;
+}
+
+.video-card:hover img {
+  filter: grayscale(0) contrast(1.02);
 }
 
 .video-card span {
@@ -648,6 +653,49 @@ h3 {
   width: auto;
   opacity: 0.6;
   filter: brightness(1.1);
+}
+
+/* --- Scroll To Top --- */
+.scroll-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 90;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 247, 244, 0.15);
+  background: rgba(5, 5, 5, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  padding: 8px;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top:hover {
+  background: rgba(247, 247, 244, 0.12);
+  border-color: rgba(247, 247, 244, 0.3);
+  transform: translateY(-3px);
+}
+
+.scroll-top img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter:
+    brightness(1.2)
+    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7))
+    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7));
 }
 
 @media (hover: hover) {
@@ -895,6 +943,17 @@ h3 {
 
 .playlist-link:hover .lucide:last-child {
   transform: translateX(4px);
+}
+
+.playlist-link.dark {
+  background: rgba(16, 16, 16, 0.06);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.playlist-link.dark:hover {
+  background: var(--ink);
+  color: var(--white);
 }
 
 /* --- Scroll Reveal Animations --- */

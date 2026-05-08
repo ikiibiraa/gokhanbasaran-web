@@ -132,3 +132,28 @@ if (bioTimeline) {
 
   timelineObserver.observe(bioTimeline);
 }
+
+// === Scroll To Top Button ===
+const scrollTopBtn = document.getElementById('scroll-top');
+
+if (scrollTopBtn) {
+  let scrollTicking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        if (window.scrollY > 600) {
+          scrollTopBtn.classList.add('visible');
+        } else {
+          scrollTopBtn.classList.remove('visible');
+        }
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
