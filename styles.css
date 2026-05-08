@@ -52,14 +52,10 @@ button {
   gap: 22px;
   left: 0;
   padding: 16px clamp(18px, 4vw, 56px);
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   z-index: 100;
-  background: rgba(5, 5, 5, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .brand-mark {
@@ -75,12 +71,7 @@ button {
 }
 
 .brand-mark img {
-  filter:
-    brightness(1.2)
-    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7))
-    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7))
-    drop-shadow(0 0 1px rgba(247, 247, 244, 0.4))
-    drop-shadow(0 16px 34px rgba(0, 0, 0, 0.48));
+  filter: brightness(1.2) contrast(1.1) drop-shadow(0 16px 34px rgba(0, 0, 0, 0.48));
   height: 100%;
   object-fit: contain;
   width: 100%;
@@ -133,6 +124,28 @@ button {
   overflow: hidden;
   padding: 132px clamp(18px, 5vw, 72px) 48px;
   position: relative;
+}
+
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(10px); opacity: 1; }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: bounce-down 2s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.scroll-indicator .lucide {
+  width: 28px;
+  height: 28px;
+  stroke: var(--white);
+  stroke-width: 1.5;
 }
 
 .hero-bg,
@@ -692,10 +705,7 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter:
-    brightness(1.2)
-    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7))
-    drop-shadow(0 0 0.5px rgba(247, 247, 244, 0.7));
+  filter: brightness(1.2) contrast(1.1);
 }
 
 @media (hover: hover) {
@@ -757,10 +767,6 @@ h3 {
 @media (max-width: 680px) {
   .site-header {
     padding: 16px 18px;
-    background: transparent;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    border-bottom: none;
   }
 
   .brand-mark {
@@ -775,7 +781,7 @@ h3 {
 
   .brand-mark img {
     height: 100%;
-    filter: brightness(1.3) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+    filter: brightness(1.3) contrast(1.1);
   }
 
   .hero-logo img {
