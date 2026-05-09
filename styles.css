@@ -81,16 +81,53 @@ button {
   -webkit-backdrop-filter: blur(14px);
   display: inline-flex;
   height: 58px;
+  isolation: isolate;
   padding: 7px;
   pointer-events: auto;
   width: 52px;
+}
+
+.brand-mark::before,
+.brand-mark::after {
+  border-radius: inherit;
+  content: "";
+  inset: -5px;
+  pointer-events: none;
+  position: absolute;
+}
+
+.brand-mark::before {
+  animation: brand-orbit 18s linear infinite;
+  background: conic-gradient(from 0deg, transparent 0 48%, rgba(247, 247, 244, 0.72) 54%, transparent 62% 100%);
+  opacity: 0.38;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.brand-mark::after {
+  background: radial-gradient(circle, rgba(247, 247, 244, 0.14), transparent 64%);
+  filter: blur(10px);
+  opacity: 0.52;
+  transform: scale(1.04);
+  z-index: -1;
 }
 
 .brand-mark img {
   filter: brightness(1.2) contrast(1.1) drop-shadow(0 16px 34px rgba(0, 0, 0, 0.48));
   height: 100%;
   object-fit: contain;
+  position: relative;
   width: 100%;
+  z-index: 1;
+}
+
+@keyframes brand-orbit {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .nav-links {
@@ -1081,5 +1118,9 @@ h3 {
   .js .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .brand-mark::before {
+    animation: none;
   }
 }
