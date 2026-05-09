@@ -80,11 +80,11 @@ button {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   display: inline-flex;
-  height: 58px;
+  height: 64px;
   isolation: isolate;
   padding: 7px;
   pointer-events: auto;
-  width: 52px;
+  width: 58px;
 }
 
 .brand-mark::before,
@@ -858,8 +858,8 @@ h3 {
   }
 
   .brand-mark {
-    height: 54px;
-    width: 48px;
+    height: 60px;
+    width: 54px;
     background: rgba(5, 5, 5, 0.55);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1013,12 +1013,30 @@ h3 {
   }
 
   .hero-links a {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     padding: 5px 0 3px;
   }
 
   .hero-links a:not(:last-child)::after {
-    margin: 0 9px;
+    margin: 0 7px;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-links {
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .hero-links a {
+    flex: 0 1 auto;
+    font-size: clamp(0.62rem, 2.65vw, 0.74rem);
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero-links a:not(:last-child)::after {
+    margin: 0 clamp(4px, 1.45vw, 8px);
   }
 }
 
