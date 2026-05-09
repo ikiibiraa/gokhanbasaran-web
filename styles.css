@@ -272,50 +272,30 @@ h3 {
 .hero-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  max-width: 620px;
+  align-items: center;
+  gap: 0;
 }
 
 .hero-links a {
-  align-items: center;
-  background: rgba(247, 247, 244, 0.08);
-  border: 1px solid rgba(247, 247, 244, 0.12);
-  border-radius: 100px;
-  color: rgba(247, 247, 244, 0.8);
-  display: inline-flex;
-  gap: 7px;
-  font-size: 0.8rem;
+  color: rgba(247, 247, 244, 0.6);
+  font-size: 0.82rem;
   font-weight: 600;
-  padding: 10px 18px;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  letter-spacing: 0.04em;
+  padding: 8px 0;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
 }
 
-.hero-links a:first-child {
-  background: var(--white);
-  color: var(--ink);
-  border-color: var(--white);
+.hero-links a:hover {
+  color: var(--white);
 }
 
-.hero-links a:not(:first-child):hover {
-  background: rgba(247, 247, 244, 0.18);
-  border-color: rgba(247, 247, 244, 0.25);
-}
-
-.hero-links a:first-child:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(247, 247, 244, 0.15);
-}
-
-.hero-links .lucide {
-  width: 15px;
-  height: 15px;
-  stroke-width: 2;
-}
-
-.hero-links span {
-  white-space: nowrap;
+.hero-links a:not(:last-child)::after {
+  content: '·';
+  margin: 0 14px;
+  color: rgba(247, 247, 244, 0.2);
+  pointer-events: none;
+  font-weight: 900;
 }
 
 .section-wrap {
@@ -758,6 +738,10 @@ h3 {
 @media (max-width: 680px) {
   .site-header {
     padding: 16px 18px;
+  }
+
+  .scroll-indicator {
+    display: none;
   }
 
   .brand-mark {
