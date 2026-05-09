@@ -97,9 +97,9 @@ button {
 }
 
 .brand-mark::before {
-  animation: brand-orbit 18s linear infinite;
-  background: conic-gradient(from 0deg, transparent 0 48%, rgba(247, 247, 244, 0.72) 54%, transparent 62% 100%);
-  opacity: 0.38;
+  animation: brand-orbit 8s linear infinite;
+  background: conic-gradient(from 0deg, transparent 0 42%, rgba(247, 247, 244, 0.86) 51%, transparent 62% 100%);
+  opacity: 0.54;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
