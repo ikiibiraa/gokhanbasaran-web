@@ -120,16 +120,11 @@ button {
   display: grid;
   gap: clamp(28px, 4vw, 76px);
   grid-template-columns: minmax(0, 0.96fr) minmax(320px, 0.78fr);
-  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
-  padding: 132px clamp(18px, 5vw, 72px) 80px;
+  padding: clamp(116px, 12vh, 150px) clamp(18px, 5vw, 72px) clamp(126px, 16vh, 190px);
   position: relative;
   align-content: end;
-}
-
-@keyframes bounce-down {
-  0%, 100% { transform: translateY(0); opacity: 0.6; }
-  50% { transform: translateY(10px); opacity: 1; }
 }
 
 .scroll-indicator {
@@ -138,7 +133,7 @@ button {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  animation: bounce-down 2s ease-in-out infinite;
+  opacity: 0.74;
   cursor: pointer;
 }
 
@@ -156,7 +151,7 @@ button {
 }
 
 .hero-bg {
-  filter: grayscale(0.24) contrast(1.04) brightness(0.74);
+  filter: grayscale(0.18) contrast(1.04) brightness(0.82);
   height: 100%;
   object-fit: cover;
   object-position: center 22%;
@@ -165,13 +160,13 @@ button {
 
 .hero-shade {
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.96) 0%, rgba(5, 5, 5, 0.74) 42%, rgba(5, 5, 5, 0.16) 100%),
-    linear-gradient(0deg, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.08) 48%, rgba(5, 5, 5, 0.55) 100%);
+    linear-gradient(90deg, rgba(5, 5, 5, 0.92) 0%, rgba(5, 5, 5, 0.68) 42%, rgba(5, 5, 5, 0.18) 100%),
+    linear-gradient(0deg, rgba(5, 5, 5, 0.88) 0%, rgba(5, 5, 5, 0.06) 48%, rgba(5, 5, 5, 0.48) 100%);
 }
 
 .sound-lines {
   inset: 0;
-  opacity: 0.38;
+  opacity: 0.22;
   pointer-events: none;
   position: absolute;
 }
@@ -252,22 +247,8 @@ h3 {
 
 .hero-logo img {
   filter: drop-shadow(0 22px 48px rgba(0, 0, 0, 0.7));
-  max-width: 620px;
-  width: min(100%, 620px);
-}
-
-.role-line {
-  color: rgba(247, 247, 244, 0.76);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 34px;
-}
-
-.role-line span {
-  background: rgba(247, 247, 244, 0.055);
-  border: 1px solid var(--line-light);
-  padding: 8px 12px;
+  max-width: 580px;
+  width: min(100%, 580px);
 }
 
 .hero-links {
@@ -305,8 +286,8 @@ h3 {
 
 .section-wrap {
   margin: 0 auto;
-  max-width: 1220px;
-  padding: 96px clamp(18px, 4vw, 48px);
+  max-width: 1260px;
+  padding: clamp(78px, 8vw, 108px) clamp(18px, 4vw, 48px);
 }
 
 .section-heading {
@@ -322,7 +303,7 @@ h3 {
 .album-grid {
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .album-card {
@@ -330,26 +311,6 @@ h3 {
   border: 1px solid rgba(247, 247, 244, 0.08);
   overflow: hidden;
   position: relative;
-  cursor: pointer;
-}
-
-.album-card::after {
-  content: '\25B6';
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 5, 5, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--white);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
-}
-
-.album-card:hover::after {
-  opacity: 1;
 }
 
 .album-card img {
@@ -361,7 +322,7 @@ h3 {
 }
 
 .album-card:hover img {
-  transform: scale(1.06);
+  transform: scale(1.035);
 }
 
 .album-card div {
@@ -385,7 +346,7 @@ h3 {
 
 .album-card h3 {
   color: var(--white);
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   font-weight: 850;
 }
 
@@ -460,6 +421,10 @@ h3 {
 .contact-layout p {
   color: var(--muted);
   font-size: 1.05rem;
+}
+
+.bio-layout p {
+  color: #74746e;
 }
 
 .project-logo {
@@ -545,8 +510,9 @@ h3 {
 }
 
 .bio-lead {
-  color: var(--ink);
+  color: #4b4b47;
   font-size: 1.5rem;
+  font-weight: 500;
   line-height: 1.35;
 }
 
@@ -606,11 +572,6 @@ h3 {
   justify-self: start;
 }
 
-@keyframes subtle-glow {
-  0%, 100% { box-shadow: 0 0 16px rgba(247, 247, 244, 0.04); }
-  50% { box-shadow: 0 0 28px rgba(247, 247, 244, 0.1), 0 0 60px rgba(247, 247, 244, 0.03); }
-}
-
 .contact-actions a {
   align-items: center;
   background: rgba(247, 247, 244, 0.04);
@@ -622,14 +583,13 @@ h3 {
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.01em;
-  animation: subtle-glow 4s ease-in-out infinite;
   transition: all 0.3s ease;
 }
 
 .contact-actions a:hover {
   background: var(--white);
   color: var(--ink);
-  box-shadow: 0 0 32px rgba(247, 247, 244, 0.15);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.24);
 }
 
 .site-footer {
@@ -677,7 +637,7 @@ h3 {
 }
 
 .scroll-top.visible {
-  opacity: 1;
+  opacity: 0.68;
   transform: translateY(0);
   pointer-events: auto;
 }
@@ -685,6 +645,7 @@ h3 {
 .scroll-top:hover {
   background: rgba(247, 247, 244, 0.12);
   border-color: rgba(247, 247, 244, 0.3);
+  opacity: 1;
   transform: translateY(-3px);
 }
 
@@ -711,6 +672,12 @@ h3 {
 
   .nav-links a:hover {
     color: var(--white);
+  }
+}
+
+@media (max-width: 1180px) {
+  .album-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
@@ -846,6 +813,10 @@ h3 {
     flex-direction: column;
     gap: 8px;
   }
+
+  .scroll-top {
+    display: none;
+  }
 }
 
 /* --- Show More Button --- */
@@ -937,13 +908,18 @@ h3 {
 
 /* --- Scroll Reveal Animations --- */
 .reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.js .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(18px);
+  transition: opacity 0.62s cubic-bezier(0.16, 1, 0.3, 1), transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.reveal.active {
+.js .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -952,3 +928,19 @@ h3 {
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

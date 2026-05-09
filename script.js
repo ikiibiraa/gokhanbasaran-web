@@ -1,7 +1,7 @@
 // === Video Switching (Parmak İzi Project) ===
 const projectPlayer = document.querySelector(".project-video-player iframe");
 const projectButtons = document.querySelectorAll(".project-video");
-const animatedLinks = document.querySelectorAll(".hero-links a, .project-video, .contact-actions a");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 projectButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -17,17 +17,6 @@ projectButtons.forEach((button) => {
   });
 });
 
-// === Pointer Light Effect ===
-animatedLinks.forEach((link) => {
-  link.addEventListener("pointermove", (event) => {
-    const rect = link.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    link.style.setProperty("--mx", `${x}%`);
-    link.style.setProperty("--my", `${y}%`);
-  });
-});
-
 // === Lucide Icons ===
 if (window.lucide) {
   window.lucide.createIcons();
@@ -36,26 +25,30 @@ if (window.lucide) {
 // === Scroll Reveal Animation ===
 const revealElements = document.querySelectorAll('.reveal');
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    }
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealElements.forEach(el => el.classList.add('active'));
+} else {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.05
   });
-}, {
-  root: null,
-  rootMargin: '0px 0px -10% 0px',
-  threshold: 0.05
-});
 
-revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(el => revealObserver.observe(el));
+}
 
 // === Hero Parallax Effect ===
 const heroBg = document.querySelector('.hero-bg');
 const heroSection = document.querySelector('.hero-section');
 
-if (heroBg && heroSection) {
+if (heroBg && heroSection && !prefersReducedMotion) {
   let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
