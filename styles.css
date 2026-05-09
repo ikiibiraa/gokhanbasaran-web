@@ -122,8 +122,9 @@ button {
   grid-template-columns: minmax(0, 0.96fr) minmax(320px, 0.78fr);
   min-height: 100vh;
   overflow: hidden;
-  padding: 132px clamp(18px, 5vw, 72px) 48px;
+  padding: 132px clamp(18px, 5vw, 72px) 80px;
   position: relative;
+  align-content: end;
 }
 
 @keyframes bounce-down {
@@ -194,7 +195,7 @@ button {
 .sound-lines span:nth-child(6) { --i: 6; }
 
 .hero-copy {
-  align-self: center;
+  align-self: end;
   max-width: 780px;
   position: relative;
   z-index: 1;
@@ -313,9 +314,9 @@ h3 {
   border-bottom: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 12px;
   margin-bottom: 34px;
-  padding-bottom: 22px;
+  padding-bottom: 18px;
 }
 
 .album-grid {
@@ -765,7 +766,8 @@ h3 {
 
   .hero-section {
     min-height: 100svh;
-    padding: 108px 18px 48px;
+    padding: 0 18px 80px;
+    align-content: end;
   }
 
   h2 {
